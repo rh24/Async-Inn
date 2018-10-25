@@ -8,4 +8,11 @@ namespace AsyncInn.Models
     public class Room
     {
     }
+
+    enum Layout
+    {
+        Studio,
+        OneBedroom,
+        TwoBedroom
+    }
 }
