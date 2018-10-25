@@ -13,7 +13,9 @@ namespace AsyncInn.Data
         // For composite keys and shadow properties
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<HotelRooms>().HasKey(
+                ce => new { ce.HotelID, ce.RoomID }
+                );
         }
 
         public DbSet<Hotel> Hotels { get; set; }
