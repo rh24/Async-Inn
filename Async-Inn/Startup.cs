@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Async_Inn
 {
@@ -28,7 +29,7 @@ namespace Async_Inn
             services.AddMvc();
             services.AddDbContext<AsyncInnDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("AsyncInn"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
         }
 
