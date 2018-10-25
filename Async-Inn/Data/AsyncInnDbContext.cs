@@ -24,5 +24,6 @@ namespace AsyncInn.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<HotelRooms> HotelRooms { get; set; }
+        public DbSet<AsyncInn.Models.Amenity> Amenity { get; set; }
     }
 }
