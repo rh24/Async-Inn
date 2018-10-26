@@ -20,7 +20,9 @@ The home page offers minimal styling. In order to add to the styles, make modifi
 This database schema was originally a class exercise. To set us up for success, as this is a week-long project, the finalized schema & graphic have been provided by Instructor Amanda Iverson.
 
 Hotel 1 -- * HotelRooms * -- 1 Room
+
 Room 1 -- * RoomAmenities * -- 1 Amenity
+
 Room 1 -- 1 Layout(Enum)
 
 ## Contributing
