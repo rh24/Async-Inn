@@ -13,6 +13,16 @@ The home page offers minimal styling. In order to add to the styles, make modifi
 ![HomeIndex](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/ViewsHomeIndex.png)
 ![RoomsCreate](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/RoomsCreate.png)
 
+## Database Scheme
+
+![ProvidedByAmandaIverson](https://github.com/codefellows/seattle-dotnet-401d5/blob/master/Class13-EntityFramework/Resources/SchemaAsyncInn.png)
+
+This database schema was originally a class exercise. To set us up for success, as this is a week-long project, the finalized schema & graphic have been provided by Instructor Amanda Iverson.
+
+Hotel 1 -- * HotelRooms * -- 1 Room
+Room 1 -- * RoomAmenities * -- 1 Amenity
+Room 1 -- 1 Layout(Enum)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/rh24/Async-Inn. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
