@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async-Inn", "Async-Inn\Async-Inn.csproj", "{53E37C63-CA17-4337-8170-C0CD7C611C40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncInn", "Async-Inn\AsyncInn.csproj", "{53E37C63-CA17-4337-8170-C0CD7C611C40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
