@@ -9,3 +9,14 @@ In order to get this application started, open up the Visual Studio IDE. Open up
 The home page offers minimal styling. In order to add to the styles, make modifications to the `StyleSheet.css` located within `wwwroot`, which may be accessed in the Solution Explorer.
 
 ## Sample View
+
+![HomeIndex](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/ViewsHomeIndex.png)
+![RoomsCreate](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/RoomsCreate.png)
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/rh24/Async-Inn. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+## License
+
+The web application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

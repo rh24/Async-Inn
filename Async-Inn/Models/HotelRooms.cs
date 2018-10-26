@@ -7,6 +7,7 @@ namespace AsyncInn.Models
 {
     public class HotelRooms
     {
+        // Model props
         public int HotelID { get; set; }
         public decimal RoomID { get; set; }
         public int RoomNumber { get; set; }

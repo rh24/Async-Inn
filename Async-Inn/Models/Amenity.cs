@@ -7,9 +7,11 @@ namespace AsyncInn.Models
 {
     public class Amenity
     {
+        // Model props
         public int ID { get; set; }
         public string String { get; set; }
 
+        // Navigation properties
         public ICollection<RoomAmenities> RoomAmenities { get; set; }
     }
 }
