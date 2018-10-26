@@ -13,7 +13,7 @@ The home page offers minimal styling. In order to add to the styles, make modifi
 ![HomeIndex](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/ViewsHomeIndex.png)
 ![RoomsCreate](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/RoomsCreate.png)
 
-## Database Scheme
+## Database Schema
 
 ![ProvidedByAmandaIverson](https://github.com/codefellows/seattle-dotnet-401d5/blob/master/Class13-EntityFramework/Resources/SchemaAsyncInn.png)
 
