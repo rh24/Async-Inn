@@ -4,14 +4,16 @@ using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181026190042_addHotelData")]
+    partial class addHotelData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,13 +63,11 @@ namespace AsyncInn.Migrations
                 {
                     b.Property<int>("HotelID");
 
-                    b.Property<decimal>("RoomID")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("RoomID");
 
                     b.Property<bool>("PetFriendly");
 
-                    b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("Rate");
 
                     b.Property<int?>("RoomID1");
 

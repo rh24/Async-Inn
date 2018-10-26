@@ -19,6 +19,13 @@ namespace AsyncInn.Data
             modelBuilder.Entity<RoomAmenities>().HasKey(
                 ce => new { ce.RoomID, ce.AmenityID }
                 );
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<HotelRooms>()
+                .Property(hr => hr.RoomID)
+                .HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<HotelRooms>()
+                .Property(hr => hr.Rate)
+                .HasColumnType("decimal(18,2)");
 
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel
