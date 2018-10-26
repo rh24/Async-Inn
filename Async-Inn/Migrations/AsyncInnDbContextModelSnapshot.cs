@@ -25,7 +25,7 @@ namespace AsyncInn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("String");
+                    b.Property<string>("Name");
 
                     b.HasKey("ID");
 

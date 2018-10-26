@@ -10,3 +10,11 @@ header {
     padding: 20px;
     padding-bottom: 50px;
 }
+
+nav a {
+    font-family: 'Global Sans Serif';
+    display: block;
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+}
