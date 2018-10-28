@@ -26,7 +26,7 @@ namespace AsyncInn.Data
             modelBuilder.Entity<HotelRooms>()
                 .Property(hr => hr.Rate)
                 .HasColumnType("decimal(18,2)");
-
+            // Seed model table with 5 hotels
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel
                 {
@@ -64,7 +64,7 @@ namespace AsyncInn.Data
                     Phone = "718-616-3376"
                 }
                 );
-
+            // Seed db with amentities
             modelBuilder.Entity<Amenity>().HasData(
                 new Amenity
                 {
