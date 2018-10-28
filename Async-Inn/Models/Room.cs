@@ -17,7 +17,7 @@ namespace AsyncInn.Models
         public ICollection<RoomAmenities> RoomAmenities { get; set; }
     }
 
-    enum Layout
+    public enum Layout
     {
         Studio,
         OneBedroom,
