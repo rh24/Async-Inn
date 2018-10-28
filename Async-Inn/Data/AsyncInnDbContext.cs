@@ -64,6 +64,44 @@ namespace AsyncInn.Data
                     Phone = "718-616-3376"
                 }
                 );
+
+            modelBuilder.Entity<Amenity>().HasData(
+                new Amenity
+                {
+                    ID = 1,
+                    Name = "Coffee maker",
+                },
+                new Amenity
+                {
+                    ID = 2,
+                    Name = "Waterfront view",
+                },
+                new Amenity
+                {
+                    ID = 3,
+                    Name = "Netflix",
+                },
+                new Amenity
+                {
+                    ID = 4,
+                    Name = "Luxury minibar",
+                },
+                new Amenity
+                {
+                    ID = 5,
+                    Name = "Private pianist",
+                },
+                new Amenity
+                {
+                    ID = 6,
+                    Name = "Browse unpublished letters by Ernest Hemingway",
+                },
+                new Amenity
+                {
+                    ID = 7,
+                    Name = "Floating brunch",
+                }
+                );
         }
 
         public DbSet<Hotel> Hotels { get; set; }
