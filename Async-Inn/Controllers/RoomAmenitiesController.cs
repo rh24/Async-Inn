@@ -10,23 +10,23 @@ using AsyncInn.Models;
 
 namespace AsyncInn.Controllers
 {
-    public class HotelRoomsController : Controller
+    public class RoomAmenitiesController : Controller
     {
         private readonly AsyncInnDbContext _context;
 
-        public HotelRoomsController(AsyncInnDbContext context)
+        public RoomAmenitiesController(AsyncInnDbContext context)
         {
             _context = context;
         }
 
-        // GET: HotelRooms
+        // GET: RoomAmenities
         public async Task<IActionResult> Index()
         {
-            var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel).Include(h => h.Room);
+            var asyncInnDbContext = _context.RoomAmenities.Include(r => r.Amenity).Include(r => r.Room);
             return View(await asyncInnDbContext.ToListAsync());
         }
 
-        // GET: HotelRooms/Details/5
+        // GET: RoomAmenities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,45 +34,45 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotelRooms = await _context.HotelRooms
-                .Include(h => h.Hotel)
-                .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
-            if (hotelRooms == null)
+            var roomAmenities = await _context.RoomAmenities
+                .Include(r => r.Amenity)
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
+            if (roomAmenities == null)
             {
                 return NotFound();
             }
 
-            return View(hotelRooms);
+            return View(roomAmenities);
         }
 
-        // GET: HotelRooms/Create
+        // GET: RoomAmenities/Create
         public IActionResult Create()
         {
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name");
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name");
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
             return View();
         }
 
-        // POST: HotelRooms/Create
+        // POST: RoomAmenities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("HotelID,RoomID,RoomNumber,Rate,PetFriendly")] HotelRooms hotelRooms)
+        public async Task<IActionResult> Create([Bind("AmenityID,RoomID")] RoomAmenities roomAmenities)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hotelRooms);
+                _context.Add(roomAmenities);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name", hotelRooms.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", hotelRooms.RoomID);
-            return View(hotelRooms);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
+            return View(roomAmenities);
         }
 
-        // GET: HotelRooms/Edit/5
+        // GET: RoomAmenities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,24 +80,24 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotelRooms = await _context.HotelRooms.FindAsync(id);
-            if (hotelRooms == null)
+            var roomAmenities = await _context.RoomAmenities.FindAsync(id);
+            if (roomAmenities == null)
             {
                 return NotFound();
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name", hotelRooms.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", hotelRooms.RoomID);
-            return View(hotelRooms);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
+            return View(roomAmenities);
         }
 
-        // POST: HotelRooms/Edit/5
+        // POST: RoomAmenities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("HotelID,RoomID,RoomNumber,Rate,PetFriendly")] HotelRooms hotelRooms)
+        public async Task<IActionResult> Edit(int id, [Bind("AmenityID,RoomID")] RoomAmenities roomAmenities)
         {
-            if (id != hotelRooms.HotelID)
+            if (id != roomAmenities.RoomID)
             {
                 return NotFound();
             }
@@ -106,12 +106,12 @@ namespace AsyncInn.Controllers
             {
                 try
                 {
-                    _context.Update(hotelRooms);
+                    _context.Update(roomAmenities);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelRoomsExists(hotelRooms.HotelID))
+                    if (!RoomAmenitiesExists(roomAmenities.RoomID))
                     {
                         return NotFound();
                     }
@@ -122,12 +122,12 @@ namespace AsyncInn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name", hotelRooms.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", hotelRooms.RoomID);
-            return View(hotelRooms);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
+            return View(roomAmenities);
         }
 
-        // GET: HotelRooms/Delete/5
+        // GET: RoomAmenities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,32 +135,32 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotelRooms = await _context.HotelRooms
-                .Include(h => h.Hotel)
-                .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
-            if (hotelRooms == null)
+            var roomAmenities = await _context.RoomAmenities
+                .Include(r => r.Amenity)
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
+            if (roomAmenities == null)
             {
                 return NotFound();
             }
 
-            return View(hotelRooms);
+            return View(roomAmenities);
         }
 
-        // POST: HotelRooms/Delete/5
+        // POST: RoomAmenities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hotelRooms = await _context.HotelRooms.FindAsync(id);
-            _context.HotelRooms.Remove(hotelRooms);
+            var roomAmenities = await _context.RoomAmenities.FindAsync(id);
+            _context.RoomAmenities.Remove(roomAmenities);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HotelRoomsExists(int id)
+        private bool RoomAmenitiesExists(int id)
         {
-            return _context.HotelRooms.Any(e => e.HotelID == id);
+            return _context.RoomAmenities.Any(e => e.RoomID == id);
         }
     }
 }

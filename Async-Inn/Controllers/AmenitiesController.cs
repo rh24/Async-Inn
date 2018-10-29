@@ -54,7 +54,7 @@ namespace AsyncInn.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,String")] Amenity amenity)
+        public async Task<IActionResult> Create([Bind("ID,Name")] Amenity amenity)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace AsyncInn.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,String")] Amenity amenity)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Amenity amenity)
         {
             if (id != amenity.ID)
             {
