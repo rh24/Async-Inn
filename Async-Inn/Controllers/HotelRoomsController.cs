@@ -22,7 +22,7 @@ namespace AsyncInn.Controllers
         // GET: HotelRooms
         public async Task<IActionResult> Index()
         {
-            var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel);
+            var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel).Include(h => h.Room);
             return View(await asyncInnDbContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace AsyncInn.Controllers
 
             var hotelRooms = await _context.HotelRooms
                 .Include(h => h.Hotel)
+                .Include(h => h.Room)
                 .FirstOrDefaultAsync(m => m.HotelID == id);
             if (hotelRooms == null)
             {
@@ -50,8 +51,6 @@ namespace AsyncInn.Controllers
         {
             ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name");
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
-            //IEnumerable<Room> rooms = _context.Rooms.Include(r => r.Name);
-            //ViewBag.Room = rooms.First();
             return View();
         }
 
@@ -138,6 +137,7 @@ namespace AsyncInn.Controllers
 
             var hotelRooms = await _context.HotelRooms
                 .Include(h => h.Hotel)
+                .Include(h => h.Room)
                 .FirstOrDefaultAsync(m => m.HotelID == id);
             if (hotelRooms == null)
             {
