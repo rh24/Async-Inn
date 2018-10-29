@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,15 @@ namespace AsyncInn.Models
     {
         // Model props
         public int HotelID { get; set; }
+        [Required(ErrorMessage = "There needs to be a Room association.")]
+        [Display(Name = "Room ID")]
         public decimal RoomID { get; set; }
+        [Required(ErrorMessage = "Please, enter the Room number.")]
+        [Display(Name = "Room Number")]
         public int RoomNumber { get; set; }
+        [Required(ErrorMessage = "Customers need to know how much the nightly rate for this room is.")]
         public decimal Rate { get; set; }
+        [Required(ErrorMessage = "Can customers bring their pets?")]
         public bool PetFriendly { get; set; }
 
         // Navigation properties

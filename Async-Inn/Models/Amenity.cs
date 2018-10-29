@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace AsyncInn.Models
 {
@@ -9,6 +8,8 @@ namespace AsyncInn.Models
     {
         // Model props
         public int ID { get; set; }
+        [Required(ErrorMessage = "What's this amenity called?")]
+        [Display(Name = "Type of service")]
         public string Name { get; set; }
 
         // Navigation properties
