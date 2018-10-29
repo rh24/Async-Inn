@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AsyncInn.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace AsyncInn.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,9 +26,9 @@ namespace AsyncInn.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +54,7 @@ namespace AsyncInn.Migrations
                 columns: table => new
                 {
                     HotelID = table.Column<int>(nullable: false),
-                    RoomID = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    RoomID = table.Column<decimal>(nullable: false),
                     RoomNumber = table.Column<int>(nullable: false),
                     Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PetFriendly = table.Column<bool>(nullable: false),

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20181029001951_Initial")]
-    partial class Initial
+    [Migration("20181029014058_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,8 @@ namespace AsyncInn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -50,11 +51,14 @@ namespace AsyncInn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -73,8 +77,7 @@ namespace AsyncInn.Migrations
                 {
                     b.Property<int>("HotelID");
 
-                    b.Property<decimal>("RoomID")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("RoomID");
 
                     b.Property<bool>("PetFriendly");
 

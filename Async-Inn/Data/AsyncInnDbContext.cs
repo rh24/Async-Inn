@@ -21,9 +21,6 @@ namespace AsyncInn.Data
                 );
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<HotelRooms>()
-                .Property(hr => hr.RoomID)
-                .HasColumnType("decimal(18,2)");
-            modelBuilder.Entity<HotelRooms>()
                 .Property(hr => hr.Rate)
                 .HasColumnType("decimal(18,2)");
 
