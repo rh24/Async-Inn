@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20181026050316_initial")]
-    partial class initial
+    [Migration("20181029001951_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,16 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Amenity");
+
+                    b.HasData(
+                        new { ID = 1, Name = "Coffee maker" },
+                        new { ID = 2, Name = "Waterfront view" },
+                        new { ID = 3, Name = "Netflix" },
+                        new { ID = 4, Name = "Luxury minibar" },
+                        new { ID = 5, Name = "Private pianist" },
+                        new { ID = 6, Name = "Browse unpublished letters by Ernest Hemingway" },
+                        new { ID = 7, Name = "Floating brunch" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
@@ -49,17 +59,27 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Hotels");
+
+                    b.HasData(
+                        new { ID = 1, Address = "49-27 219th St", Name = "The Async Inn - Queens", Phone = "718-884-5535" },
+                        new { ID = 2, Address = "510 Madison Ave", Name = "The Async Inn - Manhattan", Phone = "718-347-0990" },
+                        new { ID = 3, Address = "1080 Altantic Ave", Name = "The Async Inn - Brooklyn", Phone = "347-888-8878" },
+                        new { ID = 4, Address = "4 Fairview Rd", Name = "The Async Inn - Staten Island", Phone = "917-888-8878" },
+                        new { ID = 5, Address = "210 Dreiser Loop", Name = "The Async Inn - Bronx", Phone = "718-616-3376" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.HotelRooms", b =>
                 {
                     b.Property<int>("HotelID");
 
-                    b.Property<decimal>("RoomID");
+                    b.Property<decimal>("RoomID")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("PetFriendly");
 
-                    b.Property<decimal>("Rate");
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("RoomID1");
 
@@ -80,7 +100,8 @@ namespace AsyncInn.Migrations
 
                     b.Property<int>("Layout");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("ID");
 

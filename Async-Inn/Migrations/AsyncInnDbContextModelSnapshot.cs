@@ -30,6 +30,16 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Amenity");
+
+                    b.HasData(
+                        new { ID = 1, Name = "Coffee maker" },
+                        new { ID = 2, Name = "Waterfront view" },
+                        new { ID = 3, Name = "Netflix" },
+                        new { ID = 4, Name = "Luxury minibar" },
+                        new { ID = 5, Name = "Private pianist" },
+                        new { ID = 6, Name = "Browse unpublished letters by Ernest Hemingway" },
+                        new { ID = 7, Name = "Floating brunch" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
@@ -88,7 +98,8 @@ namespace AsyncInn.Migrations
 
                     b.Property<int>("Layout");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("ID");
 

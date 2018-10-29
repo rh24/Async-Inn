@@ -3,9 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AsyncInn.Migrations
 {
-#pragma warning disable IDE1006 // Naming Styles
-    public partial class initial : Migration
-#pragma warning restore IDE1006 // Naming Styles
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +41,7 @@ namespace AsyncInn.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Layout = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -56,9 +54,9 @@ namespace AsyncInn.Migrations
                 columns: table => new
                 {
                     HotelID = table.Column<int>(nullable: false),
-                    RoomID = table.Column<decimal>(nullable: false),
+                    RoomID = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     RoomNumber = table.Column<int>(nullable: false),
-                    Rate = table.Column<decimal>(nullable: false),
+                    Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PetFriendly = table.Column<bool>(nullable: false),
                     RoomID1 = table.Column<int>(nullable: true)
                 },
@@ -101,6 +99,32 @@ namespace AsyncInn.Migrations
                         principalTable: "Rooms",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Amenity",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Coffee maker" },
+                    { 2, "Waterfront view" },
+                    { 3, "Netflix" },
+                    { 4, "Luxury minibar" },
+                    { 5, "Private pianist" },
+                    { 6, "Browse unpublished letters by Ernest Hemingway" },
+                    { 7, "Floating brunch" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hotels",
+                columns: new[] { "ID", "Address", "Name", "Phone" },
+                values: new object[,]
+                {
+                    { 1, "49-27 219th St", "The Async Inn - Queens", "718-884-5535" },
+                    { 2, "510 Madison Ave", "The Async Inn - Manhattan", "718-347-0990" },
+                    { 3, "1080 Altantic Ave", "The Async Inn - Brooklyn", "347-888-8878" },
+                    { 4, "4 Fairview Rd", "The Async Inn - Staten Island", "917-888-8878" },
+                    { 5, "210 Dreiser Loop", "The Async Inn - Bronx", "718-616-3376" }
                 });
 
             migrationBuilder.CreateIndex(
