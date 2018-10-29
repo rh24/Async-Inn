@@ -49,8 +49,8 @@ namespace AsyncInn.Controllers
         // GET: RoomAmenities/Create
         public IActionResult Create()
         {
-            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "ID");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID");
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name");
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace AsyncInn.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenityID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", roomAmenities.RoomID);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
 
@@ -85,8 +85,8 @@ namespace AsyncInn.Controllers
             {
                 return NotFound();
             }
-            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenityID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", roomAmenities.RoomID);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
 
@@ -122,8 +122,8 @@ namespace AsyncInn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenityID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", roomAmenities.RoomID);
+            ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
 

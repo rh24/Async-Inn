@@ -14,7 +14,7 @@ namespace AsyncInn.Models
         public int HotelID { get; set; }
         [Required(ErrorMessage = "There needs to be a Room association.")]
         [Display(Name = "Room")]
-        public int RoomID { get; set; }
+        public decimal RoomID { get; set; }
         [Required(ErrorMessage = "Please, enter the Room number.")]
         [Display(Name = "Room Number")]
         public int RoomNumber { get; set; }
