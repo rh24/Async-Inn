@@ -9,9 +9,11 @@ namespace AsyncInn.Models
     public class HotelRooms
     {
         // Model props
+        [Required(ErrorMessage = "There needs to be a Hotel association.")]
+        [Display(Name = "Hotel")]
         public int HotelID { get; set; }
         [Required(ErrorMessage = "There needs to be a Room association.")]
-        [Display(Name = "Room ID")]
+        [Display(Name = "Room")]
         public decimal RoomID { get; set; }
         [Required(ErrorMessage = "Please, enter the Room number.")]
         [Display(Name = "Room Number")]
