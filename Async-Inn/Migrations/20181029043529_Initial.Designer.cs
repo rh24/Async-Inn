@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20181029014058_initial")]
-    partial class initial
+    [Migration("20181029043529_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,6 +109,15 @@ namespace AsyncInn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new { ID = 1, Layout = 1, Name = "Winter Retreat" },
+                        new { ID = 2, Layout = 3, Name = "Amazonian River" },
+                        new { ID = 3, Layout = 0, Name = "Sunset Park" },
+                        new { ID = 4, Layout = 2, Name = "Himalayan Mountain" },
+                        new { ID = 5, Layout = 1, Name = "The Matrix" },
+                        new { ID = 6, Layout = 0, Name = "Esoteric Sunrise" }
+                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.RoomAmenities", b =>

@@ -14,7 +14,7 @@ namespace AsyncInn.Models
         // There is no way for the user to select blank. Is it possible to have a blank with an enum?
         [Required(ErrorMessage = "Please, select the layout of this room.")]
         [EnumDataType(typeof(Layout))]
-        public int Layout { get; set; }
+        public Layout Layout { get; set; }
 
         // Navigation properties
         public ICollection<HotelRooms> HotelRooms { get; set; }

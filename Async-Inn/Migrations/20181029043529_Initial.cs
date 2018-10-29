@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AsyncInn.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -120,11 +120,24 @@ namespace AsyncInn.Migrations
                 columns: new[] { "ID", "Address", "Name", "Phone" },
                 values: new object[,]
                 {
-                    { 1, "49-27 219th St", "The Async Inn - Queens", "718-884-5535" },
-                    { 2, "510 Madison Ave", "The Async Inn - Manhattan", "718-347-0990" },
-                    { 3, "1080 Altantic Ave", "The Async Inn - Brooklyn", "347-888-8878" },
+                    { 5, "210 Dreiser Loop", "The Async Inn - Bronx", "718-616-3376" },
                     { 4, "4 Fairview Rd", "The Async Inn - Staten Island", "917-888-8878" },
-                    { 5, "210 Dreiser Loop", "The Async Inn - Bronx", "718-616-3376" }
+                    { 2, "510 Madison Ave", "The Async Inn - Manhattan", "718-347-0990" },
+                    { 1, "49-27 219th St", "The Async Inn - Queens", "718-884-5535" },
+                    { 3, "1080 Altantic Ave", "The Async Inn - Brooklyn", "347-888-8878" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "ID", "Layout", "Name" },
+                values: new object[,]
+                {
+                    { 5, 1, "The Matrix" },
+                    { 1, 1, "Winter Retreat" },
+                    { 2, 3, "Amazonian River" },
+                    { 3, 0, "Sunset Park" },
+                    { 4, 2, "Himalayan Mountain" },
+                    { 6, 0, "Esoteric Sunrise" }
                 });
 
             migrationBuilder.CreateIndex(

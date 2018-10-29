@@ -63,7 +63,7 @@ namespace AsyncInn.Data
                 }
                 );
 
-            // Seed db with amentities
+            // Seed db with at least 5 amentities
             modelBuilder.Entity<Amenity>().HasData(
                 new Amenity
                 {
@@ -102,7 +102,45 @@ namespace AsyncInn.Data
                 }
                 );
 
-            //modelBuilder.Seed();
+            // Seed database with at least 6 room types
+            modelBuilder.Entity<Room>().HasData(
+                new Room
+                {
+                    ID = 1,
+                    Name = "Winter Retreat",
+                    Layout = Layout.OneBedroom
+                },
+                new Room
+                {
+                    ID = 2,
+                    Name = "Amazonian River",
+                    Layout = Layout.Penthouse
+                },
+                new Room
+                {
+                    ID = 3,
+                    Name = "Sunset Park",
+                    Layout = Layout.Studio
+                },
+                new Room
+                {
+                    ID = 4,
+                    Name = "Himalayan Mountain",
+                    Layout = Layout.TwoBedroom
+                },
+                new Room
+                {
+                    ID = 5,
+                    Name = "The Matrix",
+                    Layout = Layout.OneBedroom
+                },
+                new Room
+                {
+                    ID = 6,
+                    Name = "Esoteric Sunrise",
+                    Layout = Layout.Studio
+                }
+                );
         }
 
         public DbSet<Hotel> Hotels { get; set; }
