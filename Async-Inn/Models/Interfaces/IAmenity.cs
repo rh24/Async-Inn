@@ -38,8 +38,6 @@ namespace AsyncInn.Interfaces
         /// <param name="amenity">amenity object to update</param>
         /// <returns>Task object with no return value</returns>
         Task UpdateAmenity(Amenity amenity);
-        void Add(Amenity amenity);
-        Task SaveChangesAsync();
 
         /// <summary>
         /// DELETE
