@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using Microsoft.Extensions.Configuration;
 using AsyncInn.Models.Services;
+using AsyncInn.Interfaces;
 
 namespace Async_Inn
 {
