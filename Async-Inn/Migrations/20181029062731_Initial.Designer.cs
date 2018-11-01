@@ -20,7 +20,7 @@ namespace AsyncInn.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AsyncInn.Models.Amenity", b =>
+            modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,7 @@ namespace AsyncInn.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Amenity");
+                    b.ToTable("Hotel");
 
                     b.HasData(
                         new { ID = 1, Name = "Coffee maker" },
@@ -145,7 +145,7 @@ namespace AsyncInn.Migrations
 
             modelBuilder.Entity("AsyncInn.Models.RoomAmenities", b =>
                 {
-                    b.HasOne("AsyncInn.Models.Amenity", "Amenity")
+                    b.HasOne("AsyncInn.Models.Hotel", "Hotel")
                         .WithMany("RoomAmenities")
                         .HasForeignKey("AmenityID")
                         .OnDelete(DeleteBehavior.Cascade);

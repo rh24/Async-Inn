@@ -22,7 +22,7 @@ namespace AsyncInn.Controllers
         // GET: Hotels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Hotels.ToListAsync());
+            return View(await _context.Hotel.ToListAsync());
         }
 
         // GET: Hotels/Details/5
@@ -33,7 +33,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotel = await _context.Hotels
+            var hotel = await _context.Hotel
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (hotel == null)
             {
@@ -73,7 +73,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotel = await _context.Hotels.FindAsync(id);
+            var hotel = await _context.Hotel.FindAsync(id);
             if (hotel == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var hotel = await _context.Hotels
+            var hotel = await _context.Hotel
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (hotel == null)
             {
@@ -139,15 +139,15 @@ namespace AsyncInn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hotel = await _context.Hotels.FindAsync(id);
-            _context.Hotels.Remove(hotel);
+            var hotel = await _context.Hotel.FindAsync(id);
+            _context.Hotel.Remove(hotel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool HotelExists(int id)
         {
-            return _context.Hotels.Any(e => e.ID == id);
+            return _context.Hotel.Any(e => e.ID == id);
         }
     }
 }
