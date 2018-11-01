@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using Microsoft.Extensions.Configuration;
+using AsyncInn.Models.Services;
 
 namespace Async_Inn
 {
@@ -27,8 +28,9 @@ namespace Async_Inn
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            // Keep this in mind for dependency injection
-            //services.AddTransient
+            services.AddScoped<IAmenity, AmenityService>();
+            services.AddScoped<IHotel, HotelService>();
+            services.AddScoped<IRoom, RoomService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
