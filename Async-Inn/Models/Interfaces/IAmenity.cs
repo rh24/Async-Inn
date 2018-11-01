@@ -29,8 +29,8 @@ namespace AsyncInn.Interfaces
         /// READ - grab a single amenity by id
         /// </summary>
         /// <param name="id">amenity's id</param>
-        /// <returns>Task object</returns>
-        Task GetAmenity(int? id);
+        /// <returns>Amenity object</returns>
+        Task<Amenity> GetAmenity(int? id);
 
         /// <summary>
         /// UPDATE

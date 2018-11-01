@@ -25,8 +25,8 @@ namespace AsyncInn.Interfaces
         /// READ - grab a single hotel by id
         /// </summary>
         /// <param name="id">room's id</param>
-        /// <returns>Task object</returns>
-        Task GetRoom(int? id);
+        /// <returns>Room object</returns>
+        Task<Room> GetRoom(int? id);
 
         /// <summary>
         /// UPDATE

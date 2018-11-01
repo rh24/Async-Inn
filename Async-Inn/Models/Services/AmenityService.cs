@@ -21,5 +21,16 @@ namespace AsyncInn.Models.Services
             _context.Amenity.Add(amenity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task GetAmenity(int? id)
+        {
+            Amenity amenity = _context.
+        }
+
+        public async Task UpdateAmenity(Amenity amenity)
+        {
+            _context.Amenity.Update(amenity);
+            await _context.SaveChangesAsync();
+        }
     }
 }
