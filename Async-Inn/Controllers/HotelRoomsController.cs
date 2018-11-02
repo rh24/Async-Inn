@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
+using AsyncInn.Models.ViewModels;
 
 namespace AsyncInn.Controllers
 {
@@ -63,13 +64,31 @@ namespace AsyncInn.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hotelRooms);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(hotelRooms);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return RedirectToAction(nameof(DisplayError));
+                }
             }
+
             ViewData["HotelID"] = new SelectList(_context.Hotels, "ID", "Name", hotelRooms.HotelID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", hotelRooms.RoomID);
             return View(hotelRooms);
+        }
+
+        // Display view model data saying it's a duplicate room
+        public ViewResult DisplayError()
+        {
+            DuplicateObject dup = new DuplicateObject
+            {
+                ErrorMessage = "I'm sorry. You're trying to create a room that already exists in the database. This is not allowed."
+            };
+            return View(dup);
         }
 
         // GET: HotelRooms/Edit/5
