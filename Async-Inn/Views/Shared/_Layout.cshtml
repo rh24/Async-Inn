@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <h1>The Async Inn.</h1>
+    </header>
+    <nav>
+        <a asp-action="../Amenities/Index">Amenities Index</a>
+        <a asp-action="../Hotels/Index">Hotels Index</a>
+        <a asp-action="../Rooms/Index">Rooms Index</a>
+        <a asp-action="../Home/Index">Home Index</a>
+
+        <a asp-action="../Amenities/Create">Create New Amenity</a>
+        <a asp-action="../Hotels/Create">Create New Hotel</a>
+        <a asp-action="../Rooms/Create">Create A New Room</a>
+        <a asp-action="../RoomAmenities/Create">Add an amenity to an existing room</a>
+        <a asp-action="../HotelRooms/Create">Add a hotel room</a>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
