@@ -21,9 +21,16 @@ namespace AsyncInn.Controllers
         }
 
         // GET: Amenities
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm)
         {
-            return View(await _amenities.GetAmenities());
+            var amenities = await _amenities.GetAmenities();
+            if (!String.IsNullOrEmpty(searchTerm)) amenities = amenities.Where(a => CaseInsensitiveContains(a.Name, searchTerm, StringComparison.CurrentCultureIgnoreCase)).Select(a => a);
+            return View(amenities);
+        }
+
+        private bool CaseInsensitiveContains(string dbString, string searchTerm, StringComparison comparer)
+        {
+            return dbString != null && searchTerm != null ? dbString.IndexOf(searchTerm, comparer) >= 0 : false;
         }
 
         // GET: Amenities/Details/5
@@ -144,5 +151,6 @@ namespace AsyncInn.Controllers
         {
             return _amenities.GetAmenity(id) != null;
         }
+
     }
 }
