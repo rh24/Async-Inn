@@ -15,7 +15,9 @@ namespace Async_Inn
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -25,7 +27,7 @@ namespace Async_Inn
             services.AddMvc();
             services.AddDbContext<AsyncInnDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"]);
             });
 
             services.AddScoped<IAmenity, AmenityService>();

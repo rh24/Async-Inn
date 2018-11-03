@@ -128,9 +128,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: RoomAmenities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? AmenityID, int? RoomID)
         {
-            if (id == null)
+            if (AmenityID == null || RoomID == null)
             {
                 return NotFound();
             }
@@ -138,7 +138,7 @@ namespace AsyncInn.Controllers
             var roomAmenities = await _context.RoomAmenities
                 .Include(r => r.Amenity)
                 .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.RoomID == id);
+                .FirstOrDefaultAsync(m => m.RoomID == RoomID && m.AmenityID == AmenityID);
             if (roomAmenities == null)
             {
                 return NotFound();

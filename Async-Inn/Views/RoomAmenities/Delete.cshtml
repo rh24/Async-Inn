@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Delete";
+    Layout = "_Layout";
 }
 
 <h2>Delete</h2>
@@ -24,7 +25,7 @@
             @Html.DisplayFor(model => model.Room.ID)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="AmenityID" />
         <input type="hidden" asp-for="RoomID" />

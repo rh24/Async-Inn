@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
 <h2>Index</h2>
@@ -20,7 +21,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rate)
-            </th>2
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PetFriendly)
             </th>
@@ -50,9 +51,9 @@
                     @Html.DisplayFor(modelItem => item.Hotel.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { item.HotelID, item.RoomID }) |
+                    @Html.ActionLink("Details", "Details", new { item.HotelID, item.RoomID }) |
+                    @Html.ActionLink("Delete", "Delete", new { item.HotelID, item.RoomID })
                 </td>
             </tr>
         }
