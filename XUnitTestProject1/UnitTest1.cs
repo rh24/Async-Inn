@@ -30,7 +30,7 @@ namespace AsyncInnTest
         }
 
         [Fact]
-        public async System.Threading.Tasks.Task CreateAmenitiesDbContextAsync()
+        public async void CreateAmenitiesDbContext()
         {
             DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("Amenity").Options;
 
@@ -89,6 +89,43 @@ namespace AsyncInnTest
             Assert.False(sameLayout);
             Assert.Equal("Red room", room.Name);
             Assert.Equal(Layout.Penthouse, room.Layout);
+        }
+
+        [Fact]
+        public async void CRUDRoomDbContext()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("Room").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                // CREATE
+                Room room = new Room() { Name = "Penthouse", Layout = Layout.Penthouse };
+
+                context.Add(room);
+                context.SaveChanges();
+
+                // READ
+                var foundRoom = await context.Rooms.FirstOrDefaultAsync(r => r.Name == room.Name);
+
+                Assert.Equal("Penthouse", foundRoom.Name);
+
+                // UPDATE
+                foundRoom.Name = "Basement";
+                context.Rooms.Update(foundRoom);
+                context.SaveChanges();
+
+                var changedRoom = await context.Amenity.FirstOrDefaultAsync(r => r.Name == foundRoom.Name);
+
+                Assert.Equal("Basement", changedRoom.Name);
+
+                // DELETE
+                context.Amenity.Remove(changedRoom);
+                context.SaveChanges();
+
+                var deletedRoom = context.Rooms.FirstOrDefaultAsync(r => r.Name == changedRoom.Name);
+
+                Assert.Null(deletedRoom);
+            }
         }
 
         [Fact]
