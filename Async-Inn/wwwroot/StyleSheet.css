@@ -29,4 +29,10 @@ nav {
 
 main {
     margin: 10px 15px 30px 10px;
+    text-align: center;
+}
+
+.row {
+    justify-content: center;
+    margin: 0 auto;
 }
