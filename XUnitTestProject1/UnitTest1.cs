@@ -9,7 +9,9 @@ namespace AsyncInnTest
 {
     public class AsyncInnTest
     {
-
+        /// <summary>
+        /// Test getting props of amenity object
+        /// </summary>
         [Fact]
         public void CanGetAmenityName()
         {
@@ -17,6 +19,9 @@ namespace AsyncInnTest
             Assert.Equal("Rooftop bar", amenity.Name);
         }
 
+        /// <summary>
+        /// Test setting props of amenity object
+        /// </summary>
         [Fact]
         public void CanSetAmenityName()
         {
@@ -29,6 +34,9 @@ namespace AsyncInnTest
             Assert.Equal("Rainforest showerhead", amenity.Name);
         }
 
+        /// <summary>
+        /// Test CRUD operations on Amenity table
+        /// </summary>
         [Fact]
         public async void CreateAmenitiesDbContext()
         {
@@ -66,6 +74,9 @@ namespace AsyncInnTest
             }
         }
 
+        /// <summary>
+        /// Test getting props of room object
+        /// </summary>
         [Fact]
         public void CanGetRoomProps()
         {
@@ -74,6 +85,9 @@ namespace AsyncInnTest
             Assert.Equal(Layout.OneBedroom, room.Layout);
         }
 
+        /// <summary>
+        /// Test setting props of room object
+        /// </summary>
         [Fact]
         public void CanSetRoomProps()
         {
@@ -91,6 +105,9 @@ namespace AsyncInnTest
             Assert.Equal(Layout.Penthouse, room.Layout);
         }
 
+        /// <summary>
+        /// Test CRUD operations on Room table
+        /// </summary>
         [Fact]
         public async void CRUDRoomDbContext()
         {
@@ -128,6 +145,9 @@ namespace AsyncInnTest
             }
         }
 
+        /// <summary>
+        /// Test getting and setting props of RoomAmenities object
+        /// </summary>
         [Fact]
         public void CanGetandSetRoomAmenity()
         {
@@ -143,6 +163,9 @@ namespace AsyncInnTest
             Assert.Equal(4, ra.AmenityID);
         }
 
+        /// <summary>
+        /// Test CRUD operations on RoomAmenities table
+        /// </summary>
         [Fact]
         public async void CRUDRoomAmenitiesDbContext()
         {
@@ -180,6 +203,9 @@ namespace AsyncInnTest
             }
         }
 
+        /// <summary>
+        /// Test getting and setting propes of HotelRooms object
+        /// </summary>
         [Fact]
         public void CanGetAndSetHotelRooms()
         {
@@ -204,6 +230,9 @@ namespace AsyncInnTest
             Assert.Equal(10, hr.RoomNumber);
         }
 
+        /// <summary>
+        /// Test CRUD operations on HotelRooms table
+        /// </summary>
         [Fact]
         public async void CRUDHotelRoomsDbContext()
         {
@@ -241,6 +270,9 @@ namespace AsyncInnTest
             }
         }
 
+        /// <summary>
+        /// Test getting and setting props of Hotel object
+        /// </summary>
         [Fact]
         public void CanGetAndSetHotel()
         {
@@ -259,6 +291,9 @@ namespace AsyncInnTest
             Assert.Equal("test string", hotel.Phone);
         }
 
+        /// <summary>
+        /// Test CRUD operations on Hotel table
+        /// </summary>
         [Fact]
         public async void CRUDHotelDbContext()
         {
