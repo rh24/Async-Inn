@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using Xunit;
+using AsyncInn;
 
 namespace AsyncInnTest
 {
@@ -68,7 +69,7 @@ namespace AsyncInnTest
                 context.Amenity.Remove(changedAmenity);
                 context.SaveChanges();
 
-                var deletedAmenity = context.Amenity.FirstOrDefaultAsync(am => am.Name == changedAmenity.Name);
+                var deletedAmenity = context.Amenity.FirstOrDefault(am => am.Name == changedAmenity.Name);
 
                 Assert.Null(deletedAmenity);
             }
@@ -131,15 +132,15 @@ namespace AsyncInnTest
                 context.Rooms.Update(foundRoom);
                 context.SaveChanges();
 
-                var changedRoom = await context.Amenity.FirstOrDefaultAsync(r => r.Name == foundRoom.Name);
+                var changedRoom = await context.Rooms.FirstOrDefaultAsync(r => r.Name == foundRoom.Name);
 
                 Assert.Equal("Basement", changedRoom.Name);
 
                 // DELETE
-                context.Amenity.Remove(changedRoom);
+                context.Rooms.Remove(changedRoom);
                 context.SaveChanges();
 
-                var deletedRoom = context.Rooms.FirstOrDefaultAsync(r => r.Name == changedRoom.Name);
+                var deletedRoom = context.Rooms.FirstOrDefault(r => r.Name == changedRoom.Name);
 
                 Assert.Null(deletedRoom);
             }
@@ -185,19 +186,19 @@ namespace AsyncInnTest
                 Assert.Equal(1, foundRoomAmenity.RoomID);
 
                 // UPDATE
-                foundRoomAmenity.RoomID = 3;
+                foundRoomAmenity.Room = new Room() { Name = "Treehouse" };
                 context.RoomAmenities.Update(foundRoomAmenity);
                 context.SaveChanges();
 
-                var changedRoomAm = await context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
+                var changedRoomAm = await context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == foundRoomAmenity.RoomID && ra.AmenityID == foundRoomAmenity.AmenityID);
 
-                Assert.Equal(3, changedRoomAm.RoomID);
+                Assert.Equal("Treehouse", changedRoomAm.Room.Name);
 
                 // DELETE
                 context.RoomAmenities.Remove(changedRoomAm);
                 context.SaveChanges();
 
-                var deletedRoom = context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
+                var deletedRoom = context.RoomAmenities.FirstOrDefault(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
 
                 Assert.Null(deletedRoom);
             }
@@ -252,19 +253,19 @@ namespace AsyncInnTest
                 Assert.Equal(1, foundHotelRoom.RoomID);
 
                 // UPDATE
-                foundHotelRoom.RoomID = 3;
+                foundHotelRoom.Room = new Room() { Name = "Creator's Suite" };
                 context.HotelRooms.Update(foundHotelRoom);
                 context.SaveChanges();
 
-                var changedHotelRoom = await context.HotelRooms.FirstOrDefaultAsync(hr => hr.RoomID == hotelRoom.RoomID && hr.HotelID == hotelRoom.HotelID);
+                var changedHotelRoom = await context.HotelRooms.FirstOrDefaultAsync(hr => hr.RoomID == foundHotelRoom.RoomID && hr.HotelID == foundHotelRoom.HotelID);
 
-                Assert.Equal(3, changedHotelRoom.RoomID);
+                Assert.Equal("Creator's Suite", changedHotelRoom.Room.Name);
 
                 // DELETE
                 context.HotelRooms.Remove(changedHotelRoom);
                 context.SaveChanges();
 
-                var deletedRoom = context.HotelRooms.FirstOrDefaultAsync(hr => hr.RoomID == hotelRoom.RoomID && hr.HotelID == hotelRoom.HotelID);
+                var deletedRoom = context.HotelRooms.FirstOrDefault(hr => hr.RoomID == hotelRoom.RoomID && hr.HotelID == hotelRoom.HotelID);
 
                 Assert.Null(deletedRoom);
             }
@@ -325,7 +326,7 @@ namespace AsyncInnTest
                 context.Hotels.Remove(changedHotel);
                 context.SaveChanges();
 
-                var deletedHotel = context.Rooms.FirstOrDefaultAsync(h => h.ID == changedHotel.ID);
+                var deletedHotel = context.Rooms.FirstOrDefault(h => h.ID == changedHotel.ID);
 
                 Assert.Null(deletedHotel);
             }
