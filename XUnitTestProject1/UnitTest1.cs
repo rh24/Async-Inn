@@ -144,6 +144,43 @@ namespace AsyncInnTest
         }
 
         [Fact]
+        public async void CRUDRoomAmenitiesDbContext()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("RoomAmenities").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                // CREATE
+                RoomAmenities roomAm = new RoomAmenities() { RoomID = 1, AmenityID = 1 };
+
+                context.Add(roomAm);
+                context.SaveChanges();
+
+                // READ
+                var foundRoomAmenity = await context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
+
+                Assert.Equal(1, foundRoomAmenity.RoomID);
+
+                // UPDATE
+                foundRoomAmenity.RoomID = 3;
+                context.RoomAmenities.Update(foundRoomAmenity);
+                context.SaveChanges();
+
+                var changedRoomAm = await context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
+
+                Assert.Equal(3, changedRoomAm.RoomID);
+
+                // DELETE
+                context.RoomAmenities.Remove(changedRoomAm);
+                context.SaveChanges();
+
+                var deletedRoom = context.RoomAmenities.FirstOrDefaultAsync(ra => ra.RoomID == roomAm.RoomID && ra.AmenityID == roomAm.AmenityID);
+
+                Assert.Null(deletedRoom);
+            }
+        }
+
+        [Fact]
         public void CanGetAndSetHotelRooms()
         {
             HotelRooms hr = new HotelRooms() { HotelID = 1, RoomID = 2, Rate = 1000, PetFriendly = true, RoomNumber = 20 };
