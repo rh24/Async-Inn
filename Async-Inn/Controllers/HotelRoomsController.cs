@@ -88,7 +88,8 @@ namespace AsyncInn.Controllers
             {
                 ErrorMessage = "I'm sorry. You're trying to create a room that already exists in the database. This is not allowed."
             };
-            return View(dup);
+            ViewBag.dup = dup;
+            return View("../Home/Index");
         }
 
         // GET: HotelRooms/Edit/5

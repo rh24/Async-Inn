@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
+using AsyncInn.Models.ViewModels;
 
 namespace AsyncInn.Controllers
 {
@@ -63,14 +64,34 @@ namespace AsyncInn.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(roomAmenities);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(roomAmenities);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return RedirectToAction(nameof(DisplayError));
+                }
             }
+
             ViewData["AmenityID"] = new SelectList(_context.Amenity, "ID", "Name", roomAmenities.AmenityID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
+
+        // Display view model data saying it's a duplicate room
+        public ViewResult DisplayError()
+        {
+            DuplicateObject dup = new DuplicateObject
+            {
+                ErrorMessage = "I'm sorry. You're trying to create a room that already exists in the database. This is not allowed."
+            };
+            ViewBag.dup = dup;
+            return View("../Home/Index");
+        }
+
 
         // GET: RoomAmenities/Edit/5
         public async Task<IActionResult> Edit(int? id)
