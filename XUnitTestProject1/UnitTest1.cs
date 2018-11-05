@@ -235,7 +235,7 @@ namespace AsyncInnTest
                 context.HotelRooms.Remove(changedHotelRoom);
                 context.SaveChanges();
 
-                var deletedRoom = context.RoomAmenities.FirstOrDefaultAsync(hr => hr.RoomID == hotelRoom.RoomID && hr.HotelID == hotelRoom.HotelID);
+                var deletedRoom = context.HotelRooms.FirstOrDefaultAsync(hr => hr.RoomID == hotelRoom.RoomID && hr.HotelID == hotelRoom.HotelID);
 
                 Assert.Null(deletedRoom);
             }
@@ -257,6 +257,43 @@ namespace AsyncInnTest
             Assert.Equal("Fake hotel", hotel.Name);
             Assert.Equal("test", hotel.Address);
             Assert.Equal("test string", hotel.Phone);
+        }
+
+        [Fact]
+        public async void CRUDHotelDbContext()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("Room").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                // CREATE
+                Hotel hotel = new Hotel() { Name = "Andaz", Address = "1 Bay Rd", Phone = "1112223333" };
+
+                context.Add(hotel);
+                context.SaveChanges();
+
+                // READ
+                var foundHotel = await context.Hotels.FirstOrDefaultAsync(h => h.ID == hotel.ID);
+
+                Assert.Equal("Andaz", foundHotel.Name);
+
+                // UPDATE
+                foundHotel.Name = "Hyatt";
+                context.Hotels.Update(foundHotel);
+                context.SaveChanges();
+
+                var changedHotel = await context.Hotels.FirstOrDefaultAsync(h => h.ID == foundHotel.ID);
+
+                Assert.Equal("Hyatt", changedHotel.Name);
+
+                // DELETE
+                context.Hotels.Remove(changedHotel);
+                context.SaveChanges();
+
+                var deletedHotel = context.Rooms.FirstOrDefaultAsync(h => h.ID == changedHotel.ID);
+
+                Assert.Null(deletedHotel);
+            }
         }
     }
 }
