@@ -17,7 +17,7 @@ The Azure deployed version of this application may be accessed here: https://the
 ![Hotels](https://github.com/rh24/Async-Inn/blob/testing-deployment/assets/Deployed2.png)
 ![RoomsCreate](https://github.com/rh24/Async-Inn/blob/testing-deployment/assets/Deployed1.png)
 
-## Database Scheme
+## Database Schema
 
 ![ProvidedByAmandaIverson](https://github.com/codefellows/seattle-dotnet-401d5/blob/master/Class13-EntityFramework/Resources/SchemaAsyncInn.png)
 
