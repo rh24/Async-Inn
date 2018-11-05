@@ -24,7 +24,7 @@ namespace AsyncInn.Controllers
         public async Task<IActionResult> Index(string searchTerm)
         {
             var amenities = await _amenities.GetAmenities();
-            if (!String.IsNullOrEmpty(searchTerm)) amenities = amenities.Where(a => CaseInsensitiveContains(a.Name, searchTerm, StringComparison.CurrentCultureIgnoreCase)).Select(a => a);
+            if (!String.IsNullOrEmpty(searchTerm)) amenities = amenities.Where(a => CaseInsensitiveContains(a.Name, searchTerm, StringComparison.CurrentCultureIgnoreCase));
             return View(amenities);
         }
 
