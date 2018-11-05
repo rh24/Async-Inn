@@ -1,0 +1,11 @@
+﻿@model AsyncInn.Models.ViewModels.DuplicateObject
+
+@{
+    Layout = "_Layout";
+}
+
+@if (@ViewBag.dup != null)
+{
+    <h1>@ViewBag.dup.ErrorMessage</h1>
+}
+@RenderBody()
