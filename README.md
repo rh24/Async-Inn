@@ -8,12 +8,16 @@ In order to get this application started, open up the Visual Studio IDE. Open up
 
 The home page offers minimal styling. In order to add to the styles, make modifications to the `StyleSheet.css` located within `wwwroot`, which may be accessed in the Solution Explorer.
 
+## Explore Deployed App
+
+The Azure deployed version of this application may be accessed here: https://theasyncinn.azurewebsites.net/
+
 ## Sample View
 
-![HomeIndex](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/ViewsHomeIndex.png)
-![RoomsCreate](https://github.com/rh24/Async-Inn/blob/RebeccaHong-Lab13/assets/RoomsCreate.png)
+![Hotels](https://github.com/rh24/Async-Inn/blob/testing-deployment/assets/Deployed2.png)
+![RoomsCreate](https://github.com/rh24/Async-Inn/blob/testing-deployment/assets/Deployed1.png)
 
-## Database Schema
+## Database Scheme
 
 ![ProvidedByAmandaIverson](https://github.com/codefellows/seattle-dotnet-401d5/blob/master/Class13-EntityFramework/Resources/SchemaAsyncInn.png)
 
